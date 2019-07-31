@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
 import com.easyang.common.R
-import com.easyang.common.RoundDrawable
-import com.easyang.common.RoundViewHelper
+import com.easyang.common.ktx.textwatch.textWatch
 
 /**
  * @author SC16004984
@@ -59,5 +58,8 @@ class RoundTextView : TextView {
 
     fun update() {
         RoundViewHelper.setBackground(this@RoundTextView, mRoundDrawable)
+        textWatch {
+
+        }
     }
 }

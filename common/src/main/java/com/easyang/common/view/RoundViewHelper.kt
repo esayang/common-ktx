@@ -1,4 +1,4 @@
-package com.easyang.common
+package com.easyang.common.view
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -11,6 +11,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.Nullable
+import com.easyang.common.R
 
 /**
  * @author SC16004984
