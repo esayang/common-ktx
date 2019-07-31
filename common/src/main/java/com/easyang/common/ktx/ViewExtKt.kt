@@ -9,21 +9,19 @@ import androidx.core.content.res.ResourcesCompat
  * @date 2019/7/30 0030.
  */
 
-var VIEW_CLICK_DEBOUNCE_INTERVAL: Long
-    get() = 1 * 1000L
-    set(value) = Unit
+var VIEW_CLICK_DEBOUNCE_INTERVAL: Long = 1000
 
 inline fun View.debounceClick(crossinline click: (View) -> Unit) {
     debounceClick(VIEW_CLICK_DEBOUNCE_INTERVAL, click)
 }
 
-inline fun View.debounceClick(intervalDelay: Long, crossinline click: (View) -> Unit) {
+inline fun View.debounceClick(delayInterval: Long, crossinline click: (View) -> Unit) {
     this.setOnClickListener {
         this.isClickable = false
         click.invoke(it)
         postDelayed({
             this.isClickable = true
-        }, intervalDelay)
+        }, delayInterval)
     }
 }
 
