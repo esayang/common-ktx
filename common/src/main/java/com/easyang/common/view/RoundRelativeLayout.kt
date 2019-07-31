@@ -7,8 +7,6 @@ import android.widget.RelativeLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
 import com.easyang.common.R
-import com.easyang.common.RoundDrawable
-import com.easyang.common.RoundViewHelper
 
 /**
  * @author SC16004984

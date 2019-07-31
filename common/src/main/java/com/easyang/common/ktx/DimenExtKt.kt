@@ -1,4 +1,4 @@
-package com.easyang.common
+package com.easyang.common.ktx
 
 import android.content.Context
 
