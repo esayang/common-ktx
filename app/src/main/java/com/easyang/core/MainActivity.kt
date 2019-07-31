@@ -21,18 +21,10 @@ class MainActivity : AppCompatActivity() {
                 textView.text = charSequence
             }
         }
-        requestPermission(Manifest.permission.CAMERA) {
-            onGranted {
 
-            }
-
-        }
-        VIEW_CLICK_DEBOUNCE_INTERVAL.toString().log()
         textView.debounceClick {
             toast("Hello World")
         }
-
-
     }
 
 }
