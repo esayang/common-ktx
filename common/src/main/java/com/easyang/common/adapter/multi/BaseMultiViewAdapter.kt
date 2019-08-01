@@ -19,6 +19,10 @@ class BaseMultiViewAdapter<T : MultiViewItem>(list: MutableList<T>) : BaseAdapte
         return this
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return list[position].getViewType()
+    }
+
     override fun bindView(context: Context, type: Int): View {
         if (mViewTypeMap.containsKey(type)) {
             throw IllegalArgumentException("adapter have no this ViewType")

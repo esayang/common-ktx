@@ -25,7 +25,7 @@ inline fun View.debounceClick(delayInterval: Long, crossinline click: (View) -> 
     }
 }
 
-inline fun View.backgroundColor(@ColorRes colorRes: Int) {
+ fun View.backgroundColor(@ColorRes colorRes: Int) {
     this.setBackgroundColor(ResourcesCompat.getColor(resources, colorRes, null))
 }
 

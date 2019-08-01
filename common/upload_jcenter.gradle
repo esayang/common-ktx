@@ -1,0 +1,39 @@
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.esayang.common'  // 一般写唯一的包名
+version = '0.0.1'  // 版本号
+android {
+    compileSdkVersion 28
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+bintray {
+    user = "esayang"
+    key = "d1d28d772fa3cceb59b0a24ef02a9e48fb034a37"
+    configurations = ['archives']
+    pkg {
+        version {
+            name = '0.0.1'
+            desc = 'android kotlin utils'
+        }
+        repo = 'android-reponsitory'    // bintray上创建的仓库名，我这用的maven
+        name = 'common-ktx'  //发布到JCenter上的项目名字
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/esayang/common-ktx.git'
+        publish = true
+    }
+}
