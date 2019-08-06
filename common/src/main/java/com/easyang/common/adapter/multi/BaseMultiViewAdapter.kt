@@ -2,35 +2,38 @@ package com.easyang.common.adapter.multi
 
 import android.content.Context
 import android.view.View
-import androidx.annotation.LayoutRes
 import com.easyang.common.adapter.BaseAdapter
 import com.easyang.common.adapter.BaseViewHolder
+import com.easyang.common.adapter.ItemViewDelegate
 
 /**
  * @author SC16004984
  * @date 2019/7/31 0031.
  */
-class BaseMultiViewAdapter<T : MultiViewItem>(list: MutableList<T>) : BaseAdapter<T, BaseViewHolder>(list) {
+open class BaseMultiViewAdapter<T : MultiViewItem>(list: MutableList<T>) : BaseAdapter<T>(list) {
 
-    private var mViewTypeMap: MutableMap<Int, Int> = mutableMapOf()
+    private var mItemViewDelegates: MutableMap<Int, ItemViewDelegate<T>> = mutableMapOf()
 
-    fun addItemTypeLayut(type: Int, @LayoutRes layoutRes: Int): BaseMultiViewAdapter<T> {
-        mViewTypeMap[type] = layoutRes
+    public fun addItemViewDelegate(type: Int, itemViewDelegate: ItemViewDelegate<T>): BaseMultiViewAdapter<T> {
+        mItemViewDelegates[type] = itemViewDelegate
         return this
     }
 
-    override fun getItemViewType(position: Int): Int {
+    override fun getDefItemViewType(position: Int): Int {
         return list[position].getViewType()
     }
 
     override fun bindView(context: Context, type: Int): View {
-        if (mViewTypeMap.containsKey(type)) {
+        if (mItemViewDelegates.containsKey(type)) {
             throw IllegalArgumentException("adapter have no this ViewType")
         }
-        return View.inflate(context, mViewTypeMap[type]!!, null)
+        return View.inflate(context, mItemViewDelegates[type]!!.getItemLayout(), null)
     }
 
     override fun bindData(holder: BaseViewHolder, item: T, position: Int) {
+        if (mItemViewDelegates.containsKey(item.getViewType())) {
+            mItemViewDelegates[item.getViewType()]!!.bindData(holder, item, position)
+        }
     }
 
 }
