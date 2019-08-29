@@ -28,4 +28,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":common")
     api "androidx.multidex:multidex:2.0.1"
+   // api 'com.esayang.common:common:0.0.3'
 }

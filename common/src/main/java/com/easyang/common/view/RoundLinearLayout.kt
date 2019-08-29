@@ -9,7 +9,6 @@ import androidx.annotation.Nullable
 import com.easyang.common.R
 import com.easyang.common.RoundDrawable
 import com.easyang.common.RoundViewHelper
-
 /**
  * @author SC16004984
  * @date 2019/7/30 0030.
